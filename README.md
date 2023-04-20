@@ -7,12 +7,14 @@
         <h1>Khalid Waleed</h1>
         <h2>Electronics & Software Engineer</h2>
         <h3>CAREER OBJECTIVE</h3>
-        <p>Undergraduate student at Mansoura Higher Institute for Engineering & Technology and self-study MIT curriculum in Electrical Engineering and Computer Science (EECs 6-2). C, C++, SQL, Python, front-end (HTML, CSS, Js), functional programming, and problem-solving are some of my programming skills. Also, I am an Altium Designer/PCB Designer.</p>
+        <h3>Communication</h3>
         <p>Address: Mansoura - Dakahlia - Egypt</p>
         <p>Mobile: (+20) 101 042 3508</p>
         <p>Email: khalidwalidwork@gmail.com</p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/khalid-walid-17356018b/">khalid-walid-17356018b</a></p>
             <h3>PROJECTS</h3>
+        <p>Undergraduate student at Mansoura Higher Institute for Engineering & Technology and self-study MIT curriculum in Electrical Engineering and Computer Science (EECs 6-2). C, C++, SQL, Python, front-end (HTML, CSS, Js), functional programming, and problem-solving are some of my programming skills. Also, I am an Altium Designer/PCB Designer.</p>
+        
     <ul>
         <li><strong>Smart Home:</strong> Using many sensors to control the home, irrigation, security, light control with (Arduino, C++)</li>
         <li><strong>Cashier System:</strong> Windows platform for restaurant cashier system with (C#, Windows Forms)</li>
