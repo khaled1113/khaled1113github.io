@@ -10,6 +10,11 @@
         <p>Mobile: (+20) 101 042 3508</p>
         <p>Email: khalidwalidwork@gmail.com</p>
         <p>LinkedIn: <a href="https://www.linkedin.com/in/khalid-walid-17356018b/">khalid-walid-17356018b</a></p>
+        <p>HackerRank: <a href="https://www.hackerrank.com/kmr444166">khalid-walid-17356018b</a></p>
+        <p>Github: <a href="https://github.com/khaled1113">khalid-walid-17356018b</a></p>
+
+        
+
         <h3>CAREER OBJECTIVE</h3>
         <p>Undergraduate student at Mansoura Higher Institute for Engineering & Technology and self-study MIT curriculum in Electrical Engineering and Computer Science (EECs 6-2). C, C++, Python, front-end (HTML, CSS, Js) and problem-solving are some of my programming skills. Also, I am an Altium Designer/PCB Designer.</p>
        
