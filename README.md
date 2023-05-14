@@ -16,7 +16,7 @@
         
 
         <h3>CAREER OBJECTIVE</h3>
-        <p>Undergraduate student at Mansoura Higher Institute for Engineering & Technology and self-study MIT curriculum in Electrical Engineering and Computer Science (EECs 6-2). C, C++, Python, front-end (HTML, CSS, Js) and problem-solving are some of my programming skills. Also, I am an Altium Designer/PCB Designer.</p>
+        <p>Undergraduate student at Mansoura Higher Institute for Engineering & Technology  C, C++, Python, front-end (HTML, CSS, Js) and problem-solving are some of my programming skills. Also, I am an Altium Designer/PCB Designer.</p>
        
             <h3>PROJECTS</h3>
     <ul>
