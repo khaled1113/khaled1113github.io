@@ -42,6 +42,8 @@
         <li>Competitive Programming</li>
         <li>Basic front-end (HTML, CSS, JS)</li>
     </ul>
+    <h3>Competitions<h3>
+    <li>ECPC:Seventeenth Place</li>
     
     <h3>LANGUAGES</h3>
     <ul>
