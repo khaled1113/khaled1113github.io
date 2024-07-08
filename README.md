@@ -56,38 +56,6 @@
       background-color: #0056b3;
     }
   </style>
-  <script>
-    let lastAlertTime = 0;
-    async function getWeightAndUpdateUnits() {
-      let response = await fetch('/weight');
-      let weight = await response.text();
-      document.getElementById('weight').innerText = 'Weight: ' + weight + ' kg';
-      let unitWeight = parseFloat(document.getElementById('unitWeight').value);
-      if (!isNaN(unitWeight) && unitWeight > 0) {
-        let totalWeight = parseFloat(weight);
-        let numberOfUnits = Math.floor(totalWeight / unitWeight);
-        document.getElementById('units').innerText = 'Number of Units: ' + numberOfUnits;
-        let fractionalPart = (totalWeight % unitWeight).toFixed(1);
-        if (fractionalPart != 0.0) {
-          let currentTime = Date.now();
-          if (currentTime - lastAlertTime >= 10000) {
-            playAlert();
-            alert('Total weight is not a multiple of unit weight!');
-            lastAlertTime = currentTime;
-          }
-        }
-      }
-    }
-    async function tareScale() {
-      await fetch('/tare');
-      alert('Scale tared successfully');
-    }
-    function playAlert() {
-      const audio = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAABCxAgAEABAAZGF0YYQAAAB/8wAAwP8AAAAA////AAD//wAAwP8AAP8AAAD//wAA//8AAP8AAP//AAD//wAA//8AAP8AAAAA////AAD//wAA//8AAP8AAAD//wAA//8AAAD/AP//AAD//wAAwP8AAP8AAAD//wAAwP8AAP8AAAAA//8AAP//AAD//wAA//8AAAAA');
-      audio.play();
-    }
-    setInterval(getWeightAndUpdateUnits, 1000);
-  </script>
 </head>
 <body>
   <div class='container'>
