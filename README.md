@@ -1,65 +1,101 @@
-
-<html>
-    <head>
-        <title>Khalid Waleed - CV</title>
-    </head>
-    <body>
-        <h1>Khalid Waleed</h1>
-        <h2>Electronics & Software Engineer</h2>
-       <p>Address: Mansoura - Dakahlia - Egypt</p>
-        <p>Mobile: (+20) 101 042 3508</p>
-        <p>Email: khalidwalidwork@gmail.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/khalid-walid-17356018b/">khalid-walid-17356018b</a></p>
-        <p>HackerRank: <a href="https://www.hackerrank.com/kmr444166">khalid-walid-17356018b</a></p>
-        <p>Github: <a href="https://github.com/khaled1113">khalid-walid-17356018b</a></p>
-
-        
-
-        <h3>CAREER OBJECTIVE</h3>
-        <p>Undergraduate student at Mansoura Higher Institute for Engineering & Technology  C, C++, Python, front-end (HTML, CSS, Js) and problem-solving are some of my programming skills. Also, I am an Altium Designer/PCB Designer.</p>
-       
-            <h3>PROJECTS</h3>
-    <ul>
-        <li><strong>Smart Home:</strong> Using many sensors to control the home, irrigation, security, light control with (Arduino, C++)</li>
-        <li><strong>Cashier System:</strong> Windows platform for restaurant cashier system with (C#, Windows Forms)</li>
-        <li><strong>Pen Plotter Machine (CNC):</strong> Machine that prints using a real pen, developing a new way to make this machine 30% cheaper with (Fusion 360, Altium Designer, DC motor control, CNC)</li>
-        <li><strong>Lifi System:</strong> Develop a simple way to transform numbers using light by adding delay to it (C++, Arduino)</li>
-    </ul>
-    
-    <h3>EDUCATION</h3>
-    <p>Undergraduate, Electronics and Communication Engineering, Mansoura Higher Institute</p>
-    
-    <h3>TECHNICAL SKILLS</h3>
-    <ul>
-        <li>Linux</li>
-        <li>MySQL</li>
-        <li>C++</li>
-        <li>Arduino</li>
-        <li>Altium Designer</li>
-        <li>Fusion360</li>
-        <li>Supervised ML</li>
-        <li>Git/Github</li>
-        <li>Competitive Programming</li>
-        <li>Basic front-end (HTML, CSS, JS)</li>
-    </ul>
-    <h3>Competitions<h3>
-    <li>ECPC:Seventeenth Place</li>
-    
-    <h3>LANGUAGES</h3>
-    <ul>
-        <li>Arabic: Native</li>
-        <li>English: Advance</li>
-        <li>German: Basic</li>
-    </ul>
-    
-    <h3>HOBBIES</h3>
-    <ul>
-        <li>Problem Solving</li>
-        <li>Reading</li>
-    </ul>
-    
-    <h3>PERSONAL INFORMATION</h3>
-    <p>Date of Birth: 5/09/2003</p>
-    <p>Nationality: Egyptian</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESP32 Weight Display</title>
+  <style>
+    html, body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      margin: 0;
+      background-color: #f0f0f0;
+    }
+    .container {
+      width: 90%;
+      max-width: 600px;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+    input {
+      padding: 15px;
+      font-size: 1.2em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 10px;
+      width: 80%;
+      max-width: 300px;
+    }
+    button {
+      padding: 15px 30px;
+      margin: 20px 10px;
+      font-size: 1.2em;
+      color: #fff;
+      background-color: #007BFF;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  <script>
+    let lastAlertTime = 0;
+    async function getWeightAndUpdateUnits() {
+      let response = await fetch('/weight');
+      let weight = await response.text();
+      document.getElementById('weight').innerText = 'Weight: ' + weight + ' kg';
+      let unitWeight = parseFloat(document.getElementById('unitWeight').value);
+      if (!isNaN(unitWeight) && unitWeight > 0) {
+        let totalWeight = parseFloat(weight);
+        let numberOfUnits = Math.floor(totalWeight / unitWeight);
+        document.getElementById('units').innerText = 'Number of Units: ' + numberOfUnits;
+        let fractionalPart = (totalWeight % unitWeight).toFixed(1);
+        if (fractionalPart != 0.0) {
+          let currentTime = Date.now();
+          if (currentTime - lastAlertTime >= 10000) {
+            playAlert();
+            alert('Total weight is not a multiple of unit weight!');
+            lastAlertTime = currentTime;
+          }
+        }
+      }
+    }
+    async function tareScale() {
+      await fetch('/tare');
+      alert('Scale tared successfully');
+    }
+    function playAlert() {
+      const audio = new Audio('data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAABCxAgAEABAAZGF0YYQAAAB/8wAAwP8AAAAA////AAD//wAAwP8AAP8AAAD//wAA//8AAP8AAP//AAD//wAA//8AAP8AAAAA////AAD//wAA//8AAP8AAAD//wAA//8AAAD/AP//AAD//wAAwP8AAP8AAAD//wAAwP8AAP8AAAAA//8AAP//AAD//wAA//8AAAAA');
+      audio.play();
+    }
+    setInterval(getWeightAndUpdateUnits, 1000);
+  </script>
+</head>
+<body>
+  <div class='container'>
+    <h1>ESP32 Weight Display</h1>
+    <p id='weight'>Weight: </p>
+    <input type='number' id='unitWeight' placeholder='Enter unit weight (kg)' step='0.001'>
+    <p id='units'>Number of Units: </p>
+    <button onclick='tareScale()'>Tare Scale</button>
+  </div>
 </body>
 </html>
