@@ -59,6 +59,7 @@
 </head>
 <body>
   <div class='container'>
+    <h1>Smart Shelf</h1>
     <h1>ESP32 Weight Display</h1>
     <p id='weight'>Weight: </p>
     <input type='number' id='unitWeight' placeholder='Enter unit weight (kg)' step='0.001'>
