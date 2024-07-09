@@ -1,70 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ESP32 Weight Display</title>
-  <style>
-    html, body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      margin: 0;
-      background-color: #f0f0f0;
-    }
-    .container {
-      width: 90%;
-      max-width: 600px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-    h1 {
-      color: #333;
-      font-size: 2.5em;
-      margin-bottom: 20px;
-    }
-    p {
-      font-size: 1.5em;
-      margin: 10px 0;
-    }
-    input {
-      padding: 15px;
-      font-size: 1.2em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      margin-top: 10px;
-      width: 80%;
-      max-width: 300px;
-    }
-    button {
-      padding: 15px 30px;
-      margin: 20px 10px;
-      font-size: 1.2em;
-      color: #fff;
-      background-color: #007BFF;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-  </style>
+    <title>Real-Time Weight Data</title>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCENwRUTdGb7oa2ymsSGs2TDvN0z-aQIvA",
+            authDomain: "esp32-c72b0.firebaseapp.com",
+            databaseURL: "https://esp32-c72b0-default-rtdb.firebaseio.com",
+            projectId: "esp32-c72b0",
+            storageBucket: "esp32-c72b0.appspot.com",
+            messagingSenderId: "1035271337480",
+            appId: "1:1035271337480:web:4b4b43b6f518f1adfa83bd",
+            measurementId: "G-ERER2ESDC3"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        function fetchData() {
+            const weightRef = database.ref('/weight');
+            weightRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                document.getElementById('weight').innerText = 'Weight: ' + data + ' kg';
+            });
+        }
+
+        window.onload = function() {
+            fetchData();
+        };
+    </script>
 </head>
 <body>
-  <div class='container'>
-    <h1>Smart Shelf</h1>
-    <h1>ESP32 Weight Display</h1>
-    <p id='weight'>Weight: </p>
-    <input type='number' id='unitWeight' placeholder='Enter unit weight (kg)' step='0.001'>
-    <p id='units'>Number of Units: </p>
-    <button onclick='tareScale()'>Tare Scale</button>
-  </div>
+    <h1>Real-Time Weight Data</h1>
+    <div id="weight">Fetching weight...</div>
 </body>
 </html>
